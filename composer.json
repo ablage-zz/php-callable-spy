@@ -1,0 +1,29 @@
+{
+    "name": "marcelerz/php-callable-spy",
+    "description": "Spy library for testing php callables",
+    "license": "MIT",
+    "homepage": "https://github.com/marcelerz/php-callable-spy",
+    "keywords": [
+        "spy",
+        "testing",
+        "xunit"
+    ],
+    "authors": [
+        {
+            "name": "Marcel Erz",
+            "email": "marcel.erz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://github.com/marcelerz/php-callable-spy/issues"
+    },
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "CallableSpy": "src/"
+        }
+    }
+}
