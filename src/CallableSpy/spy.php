@@ -55,7 +55,7 @@ class Spy
     public function __construct($callable)
     {
         if (!is_callable($callable)) {
-            throw new InvalidArgumentException('Parameter is not a callable.');
+            throw new \InvalidArgumentException('Parameter is not a callable.');
         }
 
         $this->_callable = $callable;
@@ -105,7 +105,7 @@ class Spy
     public function getLastCall()
     {
         if (!$this->wasCalled()) {
-            throw new Exception("Callable hasn't been called.");
+            throw new \Exception("Callable hasn't been called.");
         }
 
         return $this->_callHistory[count($this->_callHistory) - 1];
