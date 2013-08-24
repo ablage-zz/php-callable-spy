@@ -61,14 +61,14 @@ class CallableTest extends PHPUnit_Framework_TestCase
     /**
      * Verifies spy
      *
-     * @param Callable\Spy $spy
+     * @param \CallableSpy\Spy $spy
      * @param boolean $wasCalled
      * @param int $callCount
      */
     protected function _verifySpy($spy, $wasCalled, $callCount) {
 
         $this->assertNotNull($spy, 'Spy was returned as NULL');
-        $this->assertInstanceOf('CallableSpy\Spy', $spy, 'Spy is not of the right type');
+        $this->assertInstanceOf('\CallableSpy\Spy', $spy, 'Spy is not of the right type');
 
         $this->assertEquals($wasCalled, $spy->wasCalled(), 'Call determination is not correct');
         $this->assertEquals($callCount, $spy->getCallCount(), 'Call count is not correct');
@@ -77,14 +77,14 @@ class CallableTest extends PHPUnit_Framework_TestCase
     /**
      * Verifies call
      *
-     * @param CallableSpy\Call $call
+     * @param \CallableSpy\Call $call
      * @param array $args
      * @param mixed $result
      */
     protected function _verifyCall($call, $args, $result) {
 
         $this->assertNotNull($call, 'Call was returned as NULL');
-        $this->assertInstanceOf('CallableSpy\Call', $call, 'Call is not of the right type');
+        $this->assertInstanceOf('\CallableSpy\Call', $call, 'Call is not of the right type');
 
         $this->assertInstanceOf('DateTime', $call->getDate(), 'Call timestamp is not of right type');
 
@@ -107,7 +107,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
         $stackTraceContext = 'StackTraceContext'; // Can be anything
 
         // Exercise
-        $call = new CallableSpy\Call($args, $result, $timestamp, $stackTraceContext);
+        $call = new \CallableSpy\Call($args, $result, $timestamp, $stackTraceContext);
 
         // Verify
         $this->_verifyCall($call, $args, $result);
@@ -141,7 +141,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
     {
         // Setup
         $callable = 'stubFn';
-        $callable = new CallableSpy\Spy($callable);
+        $callable = new \CallableSpy\Spy($callable);
 
         // Exercise
         $result = $callable($a, $b);
@@ -163,7 +163,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
     public function testLastCallWithOneCall($a, $b, $expectedResult)
     {
         // Setup
-        $callable = new CallableSpy\Spy('stubFn');
+        $callable = new \CallableSpy\Spy('stubFn');
 
         // Exercise
         $result = $callable($a, $b);
@@ -202,7 +202,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
     {
         // Setup
         $callable = array('CallableStubChild', 'staticCall');
-        $callable = new CallableSpy\Spy($callable);
+        $callable = new \CallableSpy\Spy($callable);
 
         // Exercise
         $result = $callable($a, $b);
@@ -226,7 +226,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
     {
         // Setup
         $callable = 'CallableStubChild::staticCall';
-        $callable = new CallableSpy\Spy($callable);
+        $callable = new \CallableSpy\Spy($callable);
 
         // Exercise
         $result = $callable($a, $b);
@@ -263,7 +263,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
         // Setup
         $obj = new CallableStub();
         $callable = array($obj, 'dynamicCall');
-        $callable = new CallableSpy\Spy($callable);
+        $callable = new \CallableSpy\Spy($callable);
 
         // Exercise
         $result = $callable($a);
@@ -300,7 +300,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
     {
         // Setup
         $callable = array('CallableStubChild', 'parent::staticCall');
-        $callable = new CallableSpy\Spy($callable);
+        $callable = new \CallableSpy\Spy($callable);
 
         // Exercise
         $result = $callable($a, $b);
@@ -340,7 +340,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
         $closure = function ($param1, $param2) use ($a) {
             return $a + $param1 + $param2;
         };
-        $closure = new CallableSpy\Spy($closure);
+        $closure = new \CallableSpy\Spy($closure);
 
         // Exercise
         $result = $closure($b, $c);
@@ -369,7 +369,7 @@ class CallableTest extends PHPUnit_Framework_TestCase
         );
 
         // Setup
-        $callable = new CallableSpy\Spy('stubFn');
+        $callable = new \CallableSpy\Spy('stubFn');
 
         // Exercise
         $result = call_user_func_array($callable, $data[0]['args']);

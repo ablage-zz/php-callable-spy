@@ -11,7 +11,7 @@ $fn = function ($value, $message) use ($caughtValue) {
 };
 
 // Create spy proxy for closure
-$fn = new CallableSpy\Spy($fn);
+$fn = new \CallableSpy\Spy($fn);
 
 // Exercise closure
 echo "Output: '".$fn(55, 'result')."'\n\n";
