@@ -1,6 +1,7 @@
 {
     "name": "marcelerz/php-callable-spy",
     "description": "Spy library for testing php callables",
+    "version": "1.0.0",
     "license": "MIT",
     "homepage": "https://github.com/marcelerz/php-callable-spy",
     "keywords": [
